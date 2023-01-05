@@ -17,12 +17,16 @@ print()
 print(p_element.text)
 print()
 
+
+services = []
+
 print('Services')
 things = []
 things = p_element.find_elements(By.CSS_SELECTOR,"h2[class*='text-xl font-medium'")
 
 for thing in things:
     print(thing.text)
+    services.append( thing.text )
 print()
 
 print('Statuses')
@@ -40,5 +44,7 @@ others = p_element.find_elements(By.CSS_SELECTOR,"p[class*='text-sm'")
 
 for other in others:
     print(other.text)
+
+
 
 
