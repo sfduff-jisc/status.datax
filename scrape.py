@@ -3,7 +3,7 @@
 import requests
 from selenium import webdriver
 from bs4 import BeautifulSoup
-
+from selenium.webdriver.common.by import By
 
 
 
@@ -11,14 +11,14 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'
 }
 
-driver = webdriver.Chrome()
+driver = webdriver.Safari()
 #PhantomJS()
 driver.get('https://status.datax.jisc.ac.uk')
 
-p_element = driver.find_element_by_class(class_='grid grid-cols-2 gap-4 w-3/4')
+p_element = driver.find_element(By.CSS_SELECTOR,"div[class*='flex flex-col flex-none items-center justify-center'")
 print(p_element.text)
 
-
+""""
 page = requests.get('https://status.datax.jisc.ac.uk', headers=headers)
 
 print('hello')
@@ -51,3 +51,4 @@ for quote_element in quote_elements:
   #  for tag_element in tag_elements:
   #      tags.append(tag_element.text)
   #      //
+  """
