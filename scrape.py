@@ -15,8 +15,12 @@ driver = webdriver.Safari()
 #PhantomJS()
 driver.get('https://status.datax.jisc.ac.uk')
 
+# https://www.zenrows.com/blog/scraping-javascript-rendered-web-pages#installing-the-requirements
+
 p_element = driver.find_element(By.CSS_SELECTOR,"div[class*='flex flex-col flex-none items-center justify-center'")
 print(p_element.text)
+
+
 
 """"
 page = requests.get('https://status.datax.jisc.ac.uk', headers=headers)
