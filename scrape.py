@@ -4,6 +4,7 @@ import requests
 from selenium import webdriver
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
+import time
 
 
 
@@ -14,6 +15,8 @@ headers = {
 driver = webdriver.Safari()
 #PhantomJS()
 driver.get('https://status.datax.jisc.ac.uk')
+
+time.sleep(5)
 
 # https://www.zenrows.com/blog/scraping-javascript-rendered-web-pages#installing-the-requirements
 
