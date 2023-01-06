@@ -34,10 +34,14 @@ for title in item_titles:
     page_data.update( {title : { 'status': item_states[c], 'updated': item_details[c]}})
     c=c+1
 
-# Output scraped data
+# Output scraped data 
 print()
 for record in page_data:
     print( record )
     print( page_data[record] )
     
-  
+for record in page_data:
+    if page_data[record]['status'] == 'No issues':
+        print("dont panic")
+
+
