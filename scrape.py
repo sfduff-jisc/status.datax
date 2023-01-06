@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
 
+# Automate launching of Safari, leting the page load and reading the generated JS page to the jspage object 
 jspage = webdriver.Safari()
 jspage.get('https://status.datax.jisc.ac.uk')
 time.sleep(2)
@@ -31,7 +32,7 @@ page_data = {}
 c = 0
 for title in item_titles:
     page_data.update( {title : { 'status': item_states[c], 'updated': item_details[c]}})
-    c = c + 1
+    c=c+1
 
 # Output scraped data
 print()
