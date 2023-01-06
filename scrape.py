@@ -1,77 +1,40 @@
 #¡/usr/bin/env python3
 
-import requests
 from selenium import webdriver
-from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 import time
 
-driver = webdriver.Safari()
-driver.get('https://status.datax.jisc.ac.uk')
+jspage = webdriver.Safari()
+jspage.get('https://status.datax.jisc.ac.uk')
 time.sleep(2)
 
-# https://www.zenrows.com/blog/scraping-javascript-rendered-web-pages#installing-the-requirements
+# Gather item title in a list
+titles = []
+titles = jspage.find_elements(By.CSS_SELECTOR,"h2[class*='text-xl font-medium'")
+item_titles = []
+for title in titles:
+    item_titles.append( title.text )
 
-p_element = driver.find_element(By.CSS_SELECTOR,"div[class*='flex flex-col flex-none items-center justify-center'")
-print()
-print(p_element.text)
-print()
-
-
-print('Services')
-services = []
-things = []
-things = p_element.find_elements(By.CSS_SELECTOR,"h2[class*='text-xl font-medium'")
-
-for thing in things:
-    print(thing.text)
-    services.append( thing.text )
-print()
-
-print('Statuses')
-statuses = []
+# Gather item states in a list
 states = []
-states = p_element.find_elements(By.CSS_SELECTOR,"p[class*='text-base'")
-
+states = jspage.find_elements(By.CSS_SELECTOR,"p[class*='text-base'")
+item_states = []
 for state in states:
-    print(state.text)
-    statuses.append( state.text )
+    item_states.append( state.text )
+
+# Gather item update times in a list
+details = []
+details = jspage.find_elements(By.CSS_SELECTOR,"p[class*='text-sm'")
+item_details = []
+for other in details:
+    item_details.append( other.text )
+
+page_data = {}
+c = 0
+for title in item_titles:
+    page_data.update( {title : { 'status': item_states[c], 'updated': item_details[c]}})
+    c = c + 1
 
 print()
-
-print('times')
-times = []
-others = []
-others = p_element.find_elements(By.CSS_SELECTOR,"p[class*='text-sm'")
-
-for other in others:
-    print(other.text)
-    times.append( other.text )
-
-
-print()
-print( services )
-print( statuses )
-print( times )
-
-status_page = {}
-
-
-for service in services:
-    status_page.update(service)
-
-    '''
-    
-    append(status_pa 
-    for status in statuses:
-        for tim3 in times:
-            status_pa = {}
-            status_pa['service']=service
-            status_pa['status']=status
-            status_pa['time']=tim3
-            status_page.( status_pa )
-
-print()
-print( status_page )
-
-'''
+print( page_data )    
+  
