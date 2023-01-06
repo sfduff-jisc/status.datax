@@ -38,7 +38,7 @@ for title in item_titles:
 
 # Output scraped data
 print()
- for record in page_data:
+for record in page_data:
     print( record )
     print( page_data[record] )
     
