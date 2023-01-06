@@ -29,12 +29,17 @@ item_details = []
 for other in details:
     item_details.append( other.text )
 
+# Construct page data records from titles, statuses and times
 page_data = {}
 c = 0
 for title in item_titles:
     page_data.update( {title : { 'status': item_states[c], 'updated': item_details[c]}})
     c = c + 1
 
+# Output scraped data
 print()
-print( page_data )    
+ for record in page_data:
+    print( record )
+    print( page_data[record] )
+    
   
