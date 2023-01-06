@@ -58,7 +58,11 @@ status_page = {}
 
 
 for service in services:
-    status_page
+    status_page.update(service)
+
+    '''
+    
+    append(status_pa 
     for status in statuses:
         for tim3 in times:
             status_pa = {}
@@ -70,3 +74,4 @@ for service in services:
 print()
 print( status_page )
 
+'''
