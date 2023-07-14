@@ -4,7 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
 
-# Automate launching of Safari, leting the page load and reading the generated JS page to the jspage object 
+# Automate launching of Safari, letting the page load and reading the generated JS page to the jspage object 
 jspage = webdriver.Safari()
 jspage.get('https://status.datax.jisc.ac.uk')
 time.sleep(2)
